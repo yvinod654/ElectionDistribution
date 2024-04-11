@@ -1,0 +1,6 @@
+@ElectionDistribution_HostAddress = http://localhost:5268
+
+GET {{ElectionDistribution_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

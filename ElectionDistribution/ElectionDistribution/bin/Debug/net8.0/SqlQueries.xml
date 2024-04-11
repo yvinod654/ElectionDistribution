@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Queries>
+	<UserRegistration>
+		<![CDATA[User_Registration]]>
+	</UserRegistration>
+	<UserLogin>
+		<![CDATA[Get_User]]>
+	</UserLogin>
+	<UserBySubdivision>
+		<![CDATA[Get_UserBySubdivision]]>
+	</UserBySubdivision>
+	<SubDivisionRegistration>
+		<![CDATA[SubDivision_Registration]]>
+	</SubDivisionRegistration>
+	<GetSubDivision>
+		<![CDATA[Get_SubDivision]]>
+	</GetSubDivision>
+
+</Queries>
