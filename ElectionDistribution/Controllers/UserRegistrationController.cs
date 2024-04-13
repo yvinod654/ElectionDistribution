@@ -55,7 +55,7 @@ namespace ElectionDistribution.Controllers
             List<UserRegistrationResponse> response;
             try
             {
-                response = await _userRegistrationSL.UserDetailByDivisionId(userRegistration.UserName, userRegistration.Password, Convert.ToInt32(userRegistration.UserType), Convert.ToInt32(userRegistration.RevenueSubDivisionID));
+                response = await _userRegistrationSL.UserDetailByDivisionId(userRegistration.UserName, userRegistration.Password, Convert.ToInt32(userRegistration.UserType), userRegistration.SubdevisionId.Value);
             }
             catch (Exception ex)
             {

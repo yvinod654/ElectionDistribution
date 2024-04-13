@@ -34,7 +34,7 @@ namespace ElectionDistribution.RepositoryLayer
                     command.Parameters.AddWithValue(parameterName: "@SDM_Name", request.SDMName);
                     command.Parameters.AddWithValue(parameterName: "@SDM_Mobile", request.SDMMobile);
                     command.Parameters.AddWithValue(parameterName: "@Total_Receipt", request.TotalReceipt);
-                    command.Parameters.AddWithValue(parameterName: "@Distict_Name", request.DistictName);
+                    command.Parameters.AddWithValue(parameterName: "@District_Name", request.DistrictName);
                     int status = await command.ExecuteNonQueryAsync();
                     if (status <= 0)
                     {
@@ -87,7 +87,7 @@ namespace ElectionDistribution.RepositoryLayer
                                 revenueSub.SDMName = dataReader[name: "SDMName"] != DBNull.Value ? Convert.ToString(dataReader[name: "SDMName"]) : string.Empty;
                                 revenueSub.SDMMobile = dataReader[name: "SDMMobile"] != DBNull.Value ? Convert.ToInt64(dataReader[name: "SDMMobile"]) : 0;
                                 revenueSub.TotalReceipt = dataReader[name: "TotalReceipt"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "TotalReceipt"]) : 0;
-                                revenueSub.DistictName = dataReader[name: "DistictName"] != DBNull.Value ? Convert.ToString(dataReader[name: "DistictName"]) : string.Empty;
+                                revenueSub.DistrictName = dataReader[name: "DistrictName"] != DBNull.Value ? Convert.ToString(dataReader[name: "DistrictName"]) : string.Empty;
                                 revenueSub.Id = dataReader[name: "ID"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "ID"]) : 0;
                                 revenueSubDivision.revenueSubDivisions.Add(revenueSub);
                             }

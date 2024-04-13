@@ -5,11 +5,12 @@
         public int Id { get; set; }
         public string VillageName { get; set; }
         public string GuardianName { get; set; }
-        public long GuardianMobile { get; set; }
+        public string GuardianMobile { get; set; }
         public int ReceiptCount { get; set; }
-        public int Receipts { get; set; }
-        public string AddedByUser { get; set; }
+        public string Receipts { get; set; }
+        public UserRegistrationRequest AddedByUser { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int SubdevisionId { get; set; }
     }
     public class VoterDetailResponse
     {

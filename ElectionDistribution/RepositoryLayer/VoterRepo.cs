@@ -34,7 +34,7 @@ namespace ElectionDistribution.RepositoryLayer
                     command.Parameters.AddWithValue(parameterName: "@Guardian_Mobile", request.GuardianMobile);
                     command.Parameters.AddWithValue(parameterName: "@Receipt_Count", request.ReceiptCount);
                     command.Parameters.AddWithValue(parameterName: "@Receipts_No", request.Receipts);
-                    command.Parameters.AddWithValue(parameterName: "@AddedByUser", request.AddedByUser);
+                    command.Parameters.AddWithValue(parameterName: "@AddedByUser", request.AddedByUser.UserName);
                     int status = await command.ExecuteNonQueryAsync();
                     if (status <= 0)
                     {
@@ -87,10 +87,14 @@ namespace ElectionDistribution.RepositoryLayer
                                 VoterDetail voterDetailsResponse = new VoterDetail();
                                 voterDetailsResponse.VillageName = dataReader[name: "VillageName"] != DBNull.Value ? Convert.ToString(dataReader[name: "VillageName"]) : string.Empty;
                                 voterDetailsResponse.GuardianName = dataReader[name: "GuardianName"] != DBNull.Value ? Convert.ToString(dataReader[name: "GuardianName"]) : string.Empty;
-                                voterDetailsResponse.GuardianMobile = dataReader[name: "GuardianMobile"] != DBNull.Value ? Convert.ToInt64(dataReader[name: "GuardianMobile"]) : 0;
+                                voterDetailsResponse.GuardianMobile = dataReader[name: "GuardianMobile"] != DBNull.Value ? Convert.ToString(dataReader[name: "GuardianMobile"]) : string.Empty;
                                 voterDetailsResponse.ReceiptCount = dataReader[name: "ReceiptCount"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "ReceiptCount"]) : 0;
-                                voterDetailsResponse.Receipts = dataReader[name: "Receipts"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "Receipts"]) : 0;
-                                voterDetailsResponse.AddedByUser = dataReader[name: "AddedByUser"]!=DBNull.Value ? Convert.ToString(dataReader[name: "AddedByUser"]):string.Empty;
+                                voterDetailsResponse.Receipts = dataReader[name: "Receipts"] != DBNull.Value ? Convert.ToString(dataReader[name: "Receipts"]) : string.Empty;
+                               // voterDetailsResponse.AddedByUser = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "AddedByUserId"]) : 0;
+                                voterDetailsResponse.AddedByUser.Name = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToString(dataReader[name: "AddedByUserId"]) :string.Empty;
+                                voterDetailsResponse.AddedByUser.UserName = dataReader[name: "UserName"] != DBNull.Value ? Convert.ToString(dataReader[name: "AddedByUserId"]) : string.Empty;
+                                voterDetailsResponse.AddedByUser.SubdevisionId = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "AddedByUserId"]) : 0;
+                                voterDetailsResponse.AddedByUser.UserType = UserType.User;
                                 voterDetailsResponse.CreatedDate = Convert.ToDateTime(dataReader[name: "CreatedDate"]);
                                 response.Details.Add(voterDetailsResponse);
                             }

@@ -40,7 +40,7 @@ namespace ElectionDistribution.RepositoryLayer
                     command.Parameters.AddWithValue(parameterName: "@User_Email", request.Email);
                     command.Parameters.AddWithValue(parameterName: "@User_Password", request.Password);
                     command.Parameters.AddWithValue(parameterName: "@User_Type", request.UserType);
-                    command.Parameters.AddWithValue(parameterName: "@RevenueSubDivision_ID", request.RevenueSubDivisionID);
+                    command.Parameters.AddWithValue(parameterName: "@Subdivision_Id", request.SubdevisionId);
                     int status = await command.ExecuteNonQueryAsync();
                     if (status <= 0)
                     {
