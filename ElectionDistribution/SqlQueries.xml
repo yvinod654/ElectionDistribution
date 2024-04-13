@@ -13,10 +13,15 @@
 		<![CDATA[SubDivision_Registration]]>
 	</SubDivisionRegistration>
 	<GetSubDivision>
-		<![CDATA[Get_SubDivision]]>
+		<![CDATA[ Select * from subdivision where ID=@DivisionId;]]>
 	</GetSubDivision>
+	<GetAllSubDivision>
+		<![CDATA[ Select * from subdivision;]]>
+	</GetAllSubDivision>
 	<AddVoter>
 		<![CDATA[Reciept_Entry]]>
 	</AddVoter>
-
+	<GetVoterDetails>
+		<![CDATA[Get_RecieptEntry]]>
+	</GetVoterDetails>
 </Queries>

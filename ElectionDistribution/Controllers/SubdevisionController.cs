@@ -39,7 +39,7 @@ namespace ElectionDistribution.Controllers
             try
             {
                 response = await _revenueSubDivisionSL.GetRevenueSubDivision(SubDivision);
-                return Ok(response);
+                return Ok(response.revenueSubDivisions);
             }
             catch (Exception ex)
             {

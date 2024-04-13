@@ -72,7 +72,7 @@ namespace ElectionDistribution.RepositoryLayer
                 {
                     await _mySqlConnection.OpenAsync();
                 }
-                using (MySqlCommand command = new MySqlCommand(SqlQueries.UserBySubdivision, _mySqlConnection))
+                using (MySqlCommand command = new MySqlCommand(SqlQueries.GetVoterDetails, _mySqlConnection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.CommandTimeout = 180;
@@ -90,17 +90,22 @@ namespace ElectionDistribution.RepositoryLayer
                                 voterDetailsResponse.GuardianMobile = dataReader[name: "GuardianMobile"] != DBNull.Value ? Convert.ToString(dataReader[name: "GuardianMobile"]) : string.Empty;
                                 voterDetailsResponse.ReceiptCount = dataReader[name: "ReceiptCount"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "ReceiptCount"]) : 0;
                                 voterDetailsResponse.Receipts = dataReader[name: "Receipts"] != DBNull.Value ? Convert.ToString(dataReader[name: "Receipts"]) : string.Empty;
-                               // voterDetailsResponse.AddedByUser = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "AddedByUserId"]) : 0;
-                                voterDetailsResponse.AddedByUser.Name = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToString(dataReader[name: "AddedByUserId"]) :string.Empty;
-                                voterDetailsResponse.AddedByUser.UserName = dataReader[name: "UserName"] != DBNull.Value ? Convert.ToString(dataReader[name: "AddedByUserId"]) : string.Empty;
-                                voterDetailsResponse.AddedByUser.SubdevisionId = dataReader[name: "AddedByUserId"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "AddedByUserId"]) : 0;
-                                voterDetailsResponse.AddedByUser.UserType = UserType.User;
+                                voterDetailsResponse.Id = dataReader[name: "ReceiptID"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "ReceiptID"]) : 0;
+                                voterDetailsResponse.AddedByUser = new UserRegistrationRequest()
+                                {
+                                    Name = dataReader[name: "Name"] != DBNull.Value ? Convert.ToString(dataReader[name: "Name"]) : string.Empty,
+                                    UserName = dataReader[name: "UserName"] != DBNull.Value ? Convert.ToString(dataReader[name: "UserName"]) : string.Empty,
+                                    SubdevisionId = dataReader[name: "Id"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "Id"]) : 0
+                                };
+                            
                                 voterDetailsResponse.CreatedDate = Convert.ToDateTime(dataReader[name: "CreatedDate"]);
+                                response.Details = response.Details ?? new List<VoterDetail>();
                                 response.Details.Add(voterDetailsResponse);
                             }
                         }
                         else
                         {
+                            response.ResponseMessage = response.ResponseMessage ?? new ResponseMessage();
                             response.ResponseMessage.isSuccess = false;
                             response.ResponseMessage.message = "No Record Found";
 
@@ -111,6 +116,7 @@ namespace ElectionDistribution.RepositoryLayer
             }
             catch (Exception ex)
             {
+                response.ResponseMessage = response.ResponseMessage ?? new ResponseMessage();
                 response.ResponseMessage.isSuccess = false;
                 response.ResponseMessage.message = ex.Message;
             }

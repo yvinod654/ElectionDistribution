@@ -72,9 +72,9 @@ namespace ElectionDistribution.RepositoryLayer
                 {
                     await _mySqlConnection.OpenAsync();
                 }
-                using (MySqlCommand command = new MySqlCommand(SqlQueries.GetSubdivision, _mySqlConnection))
+                using (MySqlCommand command = new MySqlCommand((SubdivisionId>0)?SqlQueries.GetSubdivision: SqlQueries.GetAllSubDivision, _mySqlConnection))
                 {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandType = System.Data.CommandType.Text;
                     command.CommandTimeout = 180;
                     command.Parameters.AddWithValue(parameterName: "@DivisionId", SubdivisionId);
                     using (MySqlDataReader dataReader = await command.ExecuteReaderAsync())
@@ -89,11 +89,13 @@ namespace ElectionDistribution.RepositoryLayer
                                 revenueSub.TotalReceipt = dataReader[name: "TotalReceipt"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "TotalReceipt"]) : 0;
                                 revenueSub.DistrictName = dataReader[name: "DistrictName"] != DBNull.Value ? Convert.ToString(dataReader[name: "DistrictName"]) : string.Empty;
                                 revenueSub.Id = dataReader[name: "ID"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "ID"]) : 0;
+                                revenueSubDivision.revenueSubDivisions = revenueSubDivision.revenueSubDivisions ?? new List<RevenueSubDivision>();
                                 revenueSubDivision.revenueSubDivisions.Add(revenueSub);
                             }
                         }
                         else
                         {
+                            revenueSubDivision.ResponseMessage = revenueSubDivision.ResponseMessage ?? new ResponseMessage();
                             revenueSubDivision.ResponseMessage.isSuccess = true;
                             revenueSubDivision.ResponseMessage.message = "No Record Found";
                            
@@ -103,6 +105,7 @@ namespace ElectionDistribution.RepositoryLayer
             }
             catch (Exception ex)
             {
+                revenueSubDivision.ResponseMessage = revenueSubDivision.ResponseMessage ?? new ResponseMessage();
                 revenueSubDivision.ResponseMessage.isSuccess = false;
                 revenueSubDivision.ResponseMessage.message = ex.Message;
             }

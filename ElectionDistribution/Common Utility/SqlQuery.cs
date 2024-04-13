@@ -22,6 +22,14 @@ namespace ElectionDistribution.Common_Utility
         {
             get { return configuration[key: "GetSubDivision"]; }
         }
+        public static string GetAllSubDivision
+        {
+            get { return configuration[key: "GetAllSubDivision"]; }
+        }
+        public static string GetVoterDetails
+        {
+            get { return configuration[key: "GetVoterDetails"]; }
+        }
         public static string AddVoter
         {
             get { return configuration[key: "AddVoter"]; }

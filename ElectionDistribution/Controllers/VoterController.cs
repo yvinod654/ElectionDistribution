@@ -34,19 +34,19 @@ namespace ElectionDistribution.Controllers
         }
 
         [HttpGet("GetVoterDetail")]
-        public async Task<IActionResult> GetVoterDetail(VoterList voter)
+        public async Task<IActionResult> GetVoterDetail(int No_Of_Record,string createdby,int SubDivisionId)
         {
             VoterDetailResponse response=new VoterDetailResponse();
             try
             {
-                response = await _voterSL.GetVoterDetail(voter.No_Of_Record, voter.createdby, Convert.ToInt32(voter.SubDivisionId));
-                return Ok(new { Data = response });
+                response = await _voterSL.GetVoterDetail(No_Of_Record, createdby, Convert.ToInt32(SubDivisionId));
+                return Ok(response.Details);
             }
             catch (Exception ex)
             {
                 response.ResponseMessage.message = ex.Message;
                 response.ResponseMessage.isSuccess = false;
-                return BadRequest(new { Data = response });
+                return BadRequest(new { Data = response.ResponseMessage });
             }
             
         }
