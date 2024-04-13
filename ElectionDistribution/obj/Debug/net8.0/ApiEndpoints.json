@@ -1,0 +1,139 @@
+[
+  {
+    "ContainingType": "ElectionDistribution.Controllers.SubdevisionController",
+    "Method": "AddSubdevision",
+    "RelativePath": "api/Subdevision/AddSubdevision",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "revenueSubDivision",
+        "Type": "ElectionDistribution.CommanLayer.Model.RevenueSubDivision",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.SubdevisionController",
+    "Method": "GetSubdevision",
+    "RelativePath": "api/Subdevision/GetSubdevision",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SubDivision",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.UserRegistrationController",
+    "Method": "AddUser",
+    "RelativePath": "api/UserRegistration/AddUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRegistration",
+        "Type": "ElectionDistribution.CommanLayer.Model.UserRegistrationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.UserRegistrationController",
+    "Method": "GetUserByDivision",
+    "RelativePath": "api/UserRegistration/GetUserByDivision",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "subdevision",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.UserRegistrationController",
+    "Method": "UserLogin",
+    "RelativePath": "api/UserRegistration/UserLogin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.VoterController",
+    "Method": "AddVoterDetail",
+    "RelativePath": "api/Voter/AddVoter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "voterDetail",
+        "Type": "ElectionDistribution.CommanLayer.Model.VoterDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElectionDistribution.Controllers.VoterController",
+    "Method": "GetVoterDetail",
+    "RelativePath": "api/Voter/GetVoterDetail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "voter",
+        "Type": "ElectionDistribution.CommanLayer.Model.VoterList",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

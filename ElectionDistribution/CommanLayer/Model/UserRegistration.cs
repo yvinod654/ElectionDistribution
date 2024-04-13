@@ -23,7 +23,9 @@
         public string Email { get; set; }
         public string SubDivisionName { get; set; }
         public string UserType { get; set; }
-        public long MobileNo { get; set; } 
+        public long MobileNo { get; set; }
+        public int? SubdevisionId { get; set; }
+
     }
     public class ResponseMessage
     {

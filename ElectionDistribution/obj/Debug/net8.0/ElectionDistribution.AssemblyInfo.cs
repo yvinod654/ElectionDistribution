@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ElectionDistribution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+234dfcc284144417a7585e4f633ad53bb53a3c72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+855156b251cc3d5e5b82f2a896c7ac7ee891ad61")]
 [assembly: System.Reflection.AssemblyProductAttribute("ElectionDistribution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ElectionDistribution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

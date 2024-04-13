@@ -115,9 +115,9 @@ namespace ElectionDistribution.RepositoryLayer
             }
             return responseMessage;
         }
-        public async Task<List<UserRegistrationResponse>> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId)
+        public async Task<UserRegistrationResponse> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId)
         {
-            List<UserRegistrationResponse> response = new List<UserRegistrationResponse>();
+            UserRegistrationResponse response = new UserRegistrationResponse();
             try
             {
                 if (_mySqlConnection.State != System.Data.ConnectionState.Open)
@@ -138,14 +138,18 @@ namespace ElectionDistribution.RepositoryLayer
                                 userDetailsResponse.Name = dataReader[name: "Name"] != DBNull.Value ? Convert.ToString(dataReader[name: "Name"]) : string.Empty;
                                 userDetailsResponse.UserName = dataReader[name: "UserName"] != DBNull.Value ? Convert.ToString(dataReader[name: "UserName"]) : string.Empty;
                                 userDetailsResponse.Email = dataReader[name: "Email"] != DBNull.Value ? Convert.ToString(dataReader[name: "Email"]) : string.Empty;
-                                userDetailsResponse.SubDivisionName = dataReader[name: "SubDivision"] != DBNull.Value ? Convert.ToString(dataReader[name: "SubDivision"]) : string.Empty;
+                                userDetailsResponse.SubDivisionName = dataReader[name: "SubDivisionName"] != DBNull.Value ? Convert.ToString(dataReader[name: "SubDivisionName"]) : string.Empty;
+                                userDetailsResponse.SubdevisionId = dataReader[name: "RevenueSubDivisionID"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "RevenueSubDivisionID"]) : 0;
                                 //userDetailsResponse.MobileNo = dataReader[name: "MobileNo"] != DBNull.Value ? Convert.ToInt32(dataReader[name: "MobileNo"]) : 0;
                                 userDetailsResponse.UserType =((UserType)Convert.ToInt32(dataReader[name: "UserType"])).ToString();
+
+                                response.userDetails = response.userDetails?? new List<UserDetails>();
+                                response.userDetails.Add(userDetailsResponse);
                             }
                         }
                         else
                         {
-                            response = new List<UserRegistrationResponse>() { new UserRegistrationResponse() { responseMessage = new ResponseMessage() { message = "No Record Found", isSuccess = false } } };
+                            response.responseMessage = new ResponseMessage() { message = "No Record Found", isSuccess = false  };
                            
                         }
                     return response;
@@ -154,7 +158,8 @@ namespace ElectionDistribution.RepositoryLayer
             }
             catch (Exception ex)
             {
-                response = new List<UserRegistrationResponse>() { new UserRegistrationResponse() { responseMessage = new ResponseMessage() { message = ex.Message, isSuccess = false } } };
+                response.responseMessage = new ResponseMessage() { message = ex.Message, isSuccess = false };
+
             }
             finally
             {

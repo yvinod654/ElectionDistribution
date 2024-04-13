@@ -756,25 +756,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bunty\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bunty\\source\\repos\\git\\yvinod654\\ElectionDistribution\\ElectionDistribution\\ElectionDistribution.csproj",
+      "projectUniqueName": "F:\\Work\\PersonalProjects\\DMOffice\\BLODistribution\\ElectionDistribution-api\\ElectionDistribution\\ElectionDistribution\\ElectionDistribution.csproj",
       "projectName": "ElectionDistribution",
-      "projectPath": "C:\\Users\\Bunty\\source\\repos\\git\\yvinod654\\ElectionDistribution\\ElectionDistribution\\ElectionDistribution.csproj",
-      "packagesPath": "C:\\Users\\Bunty\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bunty\\source\\repos\\git\\yvinod654\\ElectionDistribution\\ElectionDistribution\\obj\\",
+      "projectPath": "F:\\Work\\PersonalProjects\\DMOffice\\BLODistribution\\ElectionDistribution-api\\ElectionDistribution\\ElectionDistribution\\ElectionDistribution.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "F:\\Work\\PersonalProjects\\DMOffice\\BLODistribution\\ElectionDistribution-api\\ElectionDistribution\\ElectionDistribution\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bunty\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -837,7 +840,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

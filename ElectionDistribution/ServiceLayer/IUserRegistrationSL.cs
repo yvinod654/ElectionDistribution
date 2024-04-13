@@ -7,6 +7,6 @@ namespace ElectionDistribution.ServiceLayer
     {
         public Task<ResponseMessage> RegisterUser(UserRegistrationRequest request);
         public Task<ResponseMessage> UserLogin(string UserName, string UserPasssword, int Utype);
-        public Task<List<UserRegistrationResponse>> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId);
+        public Task<UserRegistrationResponse> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId);
     }
 }

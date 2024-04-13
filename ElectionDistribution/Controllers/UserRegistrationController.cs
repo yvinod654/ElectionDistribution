@@ -34,12 +34,12 @@ namespace ElectionDistribution.Controllers
         }
 
         [HttpGet("UserLogin")]
-        public async Task<IActionResult> UserLogin(UserRegistrationRequest userRegistration)
+        public async Task<IActionResult> UserLogin(string userName, string password, UserType userType)
         {
             ResponseMessage response = new ResponseMessage();
             try
             {
-                response = await _userRegistrationSL.UserLogin(userRegistration.UserName,userRegistration.Password,Convert.ToInt32(userRegistration.UserType));
+                response = await _userRegistrationSL.UserLogin(userName,password,Convert.ToInt32(userType));
             }
             catch (Exception ex)
             {
@@ -50,18 +50,19 @@ namespace ElectionDistribution.Controllers
         }
 
         [HttpGet("GetUserByDivision")]
-        public async Task<IActionResult> GetUserByDivision(UserRegistrationRequest userRegistration)
+        public async Task<IActionResult> GetUserByDivision(string userName, string password, UserType userType, int subdevision)
         {
-            List<UserRegistrationResponse> response;
+            UserRegistrationResponse response;
             try
             {
-                response = await _userRegistrationSL.UserDetailByDivisionId(userRegistration.UserName, userRegistration.Password, Convert.ToInt32(userRegistration.UserType), Convert.ToInt32(userRegistration.RevenueSubDivisionID));
+                response = await _userRegistrationSL.UserDetailByDivisionId(userName, password, Convert.ToInt32(userType), subdevision);
             }
             catch (Exception ex)
             {
-                response = new List<UserRegistrationResponse>() { new UserRegistrationResponse() { responseMessage = new ResponseMessage() { message = ex.Message, isSuccess = false } } };
+                //response = new UserRegistrationResponse()  { responseMessage = new ResponseMessage() { message = ex.Message, isSuccess = false } } ;
+                return BadRequest(ex.Message);
             }
-            return Ok(new { Data = response });
+            return Ok(response.userDetails);
         }
     }
 }

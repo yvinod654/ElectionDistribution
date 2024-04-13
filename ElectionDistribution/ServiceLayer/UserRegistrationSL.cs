@@ -42,18 +42,7 @@ namespace ElectionDistribution.ServiceLayer
             }
             return responseMessage;
         }
-        public async Task<List<UserRegistrationResponse>> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId)
-        {
-            List<UserRegistrationResponse> responseMessage ;
-            try
-            {
-                responseMessage = await _userRegistrationRepo.UserDetailByDivisionId(UserName, UserPasssword, Utype, SubdivisionId);
-            }
-            catch (Exception ex)
-            {
-                responseMessage = new List<UserRegistrationResponse>() { new UserRegistrationResponse() { responseMessage = new ResponseMessage() { message = ex.Message, isSuccess = false } } };
-            }
-            return responseMessage;
-        }
+        public async Task<UserRegistrationResponse> UserDetailByDivisionId(string UserName, string UserPasssword, int Utype, int SubdivisionId) 
+            => await _userRegistrationRepo.UserDetailByDivisionId(UserName, UserPasssword, Utype, SubdivisionId);
     }
 }
